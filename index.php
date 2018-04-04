@@ -4,7 +4,7 @@
 
     </head>
     <body>
-        <?php include("rejestracja.php"); ?>
-        <?php include("loginform.php"); ?>
+        <?php include("register.php"); ?>
+        <?php include("login.php"); ?>
     </body>
 </html>

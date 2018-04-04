@@ -4,8 +4,12 @@
 
 $ip = $_SERVER['REMOTE_ADDR'];
 
-$akcja = $_GET['akcja'];
-if ($akcja == 'wykonaj') {
+if(isset($_GET['akcja'])){
+    $akcja = $_GET['akcja'];
+}else{
+    $akcja= '';
+}
+if ($akcja == 'register') {
     //
     $nick = substr(addslashes(htmlspecialchars($_POST['nick'])),0,32);
     $haslo = substr(addslashes($_POST['haslo']),0,32);
@@ -73,18 +77,18 @@ if ($akcja == 'wykonaj') {
 }
 ?>
 
-<form method="post" action="index.php?akcja=wykonaj">
+<form method="post" action="index.php?akcja=register">
     <table>
         <tr class="tlo-b"><td>Nick:</td>
-            <td><input maxlength="18" type="text" name="nick" value="<?php echo $nick; ?>"></td></tr>
+            <td><input maxlength="18" type="text" name="nick" value="<?php if(isset($nick)){echo $nick;}; ?>"></td></tr>
         <tr class="tlek"><td>Hasło:</td>
             <td><input maxlength="32" type="password" name="haslo"></td></tr>
         <tr class="tlo-b"><td>Powtórz hasło:</td>
             <td><input maxlength="32" type="password" name="vhaslo"></td></tr>
         <tr class="tlo-b"><td>E-mail:</td>
-            <td><input type="text" name="email" maxlength="50" value="<?=$email?>"></td></tr>
+            <td><input type="text" name="email" maxlength="50" value="<?php if(isset($nick)){echo $email;}; ?>"></td></tr>
         <tr class="tlek"><td>Powtórz E-mail:</td>
-            <td><input type="text" maxlength="50" name="vemail" value="<?=$vemail?>"></span></td></tr>
+            <td><input type="text" maxlength="50" name="vemail" value="<?php if(isset($nick)){echo $vemail;}; ?>"></span></td></tr>
 
 
 <tr><td colspan="2" align="center"><input type="submit" value="Zarejestruj"></td></tr>
